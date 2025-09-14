@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useI18n } from "@/contexts/i18n";
 
 const HERO = {
   desktop:
@@ -71,6 +72,7 @@ const FEATURED = {
 };
 
 export default function Index() {
+  const { t } = useI18n();
   return (
     <div className="flex flex-col">
       {/* Hero */}
@@ -78,10 +80,10 @@ export default function Index() {
         <div className="container grid items-center gap-8 py-8 md:grid-cols-2 md:py-16">
           <div className="order-2 md:order-1">
             <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 md:text-5xl">
-              Starbucks®
+              {t("home_title")}
             </h1>
             <p className="mt-4 max-w-prose text-lg text-slate-700">
-              Découvrez nos 2 nouvelles boissons.
+              {t("home_sub")}
             </p>
             <div className="mt-8 flex items-center gap-4">
               <Link
