@@ -39,7 +39,10 @@ const CATEGORIES = [
   },
 ];
 
+import { useCart } from "@/contexts/cart";
+
 export default function MenuPage() {
+  const { addItem } = useCart();
   return (
     <div>
       <section className="border-b bg-brand-light">
@@ -77,10 +80,7 @@ export default function MenuPage() {
                     type="button"
                     onClick={(e) => {
                       e.preventDefault();
-                      import("@/contexts/cart").then(({ useCart }) => {
-                        // dynamic import hook usage workaround inside event: delegate to global function
-                        (window as any).__addToCart?.(c.title);
-                      });
+                      addItem(c.title, 1);
                     }}
                     className="rounded-full border px-3 py-1 text-xs font-semibold text-slate-800 hover:border-brand hover:text-brand"
                   >
