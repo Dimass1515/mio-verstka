@@ -11,6 +11,10 @@ import NotFound from "./pages/NotFound";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import PlaceholderPage from "./components/common/PlaceholderPage";
+import MenuPage from "./pages/Menu";
+import ServiceClientPage from "./pages/ServiceClient";
+import AccountLogin from "./pages/AccountLogin";
+import AccountCreate from "./pages/AccountCreate";
 
 const queryClient = new QueryClient();
 
@@ -26,13 +30,15 @@ const App = () => (
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/nos-cafes" element={<PlaceholderPage title="Nos cafés" />} />
-              <Route path="/menu" element={<PlaceholderPage title="Menu" />} />
+              <Route path="/menu" element={<MenuPage />} />
               <Route path="/rewards" element={<PlaceholderPage title="Rewards" />} />
               <Route path="/delivers" element={<PlaceholderPage title="Delivers" />} />
-              <Route path="/service-client" element={<PlaceholderPage title="Service Client" />} />
+              <Route path="/service-client" element={<ServiceClientPage />} />
               <Route path="/carriere" element={<PlaceholderPage title="Carrière" />} />
               <Route path="/trouver-un-salon" element={<PlaceholderPage title="Trouver un salon" />} />
-              <Route path="/connexion" element={<PlaceholderPage title="Se connecter" />} />
+              <Route path="/account/login" element={<AccountLogin />} />
+              <Route path="/account/create" element={<AccountCreate />} />
+              <Route path="/connexion" element={<AccountLogin />} />
               <Route path="/apropos" element={<PlaceholderPage title="À propos" />} />
               <Route path="/accessibilite" element={<PlaceholderPage title="Accessibilité" />} />
               <Route path="/responsabilite" element={<PlaceholderPage title="Responsabilité" />} />
