@@ -21,8 +21,14 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Starbucks brand palette */
+    --brand: 164 100% 19%;          /* #006241 */
+    --brand-dark: 160 100% 23%;     /* #00754A */
+    --brand-light: 160 35% 95%;     /* near #f7f7f7 */
+    --brand-foreground: 0 0% 100%;  /* white */
+
+    --primary: var(--brand);
+    --primary-foreground: var(--brand-foreground);
 
     --secondary: 210 40% 96.1%;
     --secondary-foreground: 222.2 47.4% 11.2%;
@@ -38,7 +44,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: var(--brand);
 
     --radius: 0.5rem;
 
@@ -46,7 +52,7 @@
 
     --sidebar-foreground: 240 5.3% 26.1%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary: var(--brand);
 
     --sidebar-primary-foreground: 0 0% 98%;
 
