@@ -41,7 +41,7 @@ export default function Header() {
             Trouver un salon
           </Link>
           <Link
-            to="/connexion"
+            to="/account/login"
             className="inline-flex items-center rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark"
           >
             Se connecter
