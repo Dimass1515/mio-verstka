@@ -33,29 +33,79 @@ const App = () => (
               <Header />
               <main className="flex-1">
                 <Routes>
-              <Route path="/" element={<Index />} />
-              <Route path="/nos-cafes" element={<PlaceholderPage title="Nos cafés" />} />
-              <Route path="/menu" element={<MenuPage />} />
-              <Route path="/rewards" element={<PlaceholderPage title="Rewards" />} />
-              <Route path="/delivers" element={<PlaceholderPage title="Delivers" />} />
-              <Route path="/service-client" element={<ServiceClientPage />} />
-              <Route path="/carriere" element={<PlaceholderPage title="Carrière" />} />
-              <Route path="/trouver-un-salon" element={<PlaceholderPage title="Trouver un salon" />} />
-              <Route path="/account/login" element={<AccountLogin />} />
-              <Route path="/account/create" element={<AccountCreate />} />
-              <Route path="/connexion" element={<AccountLogin />} />
-              <Route path="/apropos" element={<PlaceholderPage title="À propos" />} />
-              <Route path="/accessibilite" element={<PlaceholderPage title="Accessibilité" />} />
-              <Route path="/responsabilite" element={<PlaceholderPage title="Responsabilité" />} />
-              <Route path="/starbucks-cartes-cadeaux" element={<PlaceholderPage title="Cartes Cadeaux" />} />
-              <Route path="/rewards/ts-and-cs" element={<PlaceholderPage title="Conditions Rewards" />} />
-              <Route path="/confidentialite" element={<PlaceholderPage title="Confidentialité" />} />
-              <Route path="/cookies" element={<PlaceholderPage title="Cookies" />} />
-              <Route path="/conditions" element={<PlaceholderPage title="Conditions d'utilisation" />} />
-              <Route path="/cart" element={<PlaceholderPage title="Panier" />} />
-              <Route path="/article/*" element={<PlaceholderPage title="Article" />} />
-              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-              <Route path="*" element={<NotFound />} />
+                  <Route path="/" element={<Index />} />
+                  <Route
+                    path="/nos-cafes"
+                    element={<PlaceholderPage title="Nos cafés" />}
+                  />
+                  <Route path="/menu" element={<MenuPage />} />
+                  <Route
+                    path="/rewards"
+                    element={<PlaceholderPage title="Rewards" />}
+                  />
+                  <Route
+                    path="/delivers"
+                    element={<PlaceholderPage title="Delivers" />}
+                  />
+                  <Route
+                    path="/service-client"
+                    element={<ServiceClientPage />}
+                  />
+                  <Route
+                    path="/carriere"
+                    element={<PlaceholderPage title="Carrière" />}
+                  />
+                  <Route
+                    path="/trouver-un-salon"
+                    element={<PlaceholderPage title="Trouver un salon" />}
+                  />
+                  <Route path="/account/login" element={<AccountLogin />} />
+                  <Route path="/account/create" element={<AccountCreate />} />
+                  <Route path="/connexion" element={<AccountLogin />} />
+                  <Route
+                    path="/apropos"
+                    element={<PlaceholderPage title="À propos" />}
+                  />
+                  <Route
+                    path="/accessibilite"
+                    element={<PlaceholderPage title="Accessibilité" />}
+                  />
+                  <Route
+                    path="/responsabilite"
+                    element={<PlaceholderPage title="Responsabilité" />}
+                  />
+                  <Route
+                    path="/starbucks-cartes-cadeaux"
+                    element={<PlaceholderPage title="Cartes Cadeaux" />}
+                  />
+                  <Route
+                    path="/rewards/ts-and-cs"
+                    element={<PlaceholderPage title="Conditions Rewards" />}
+                  />
+                  <Route
+                    path="/confidentialite"
+                    element={<PlaceholderPage title="Confidentialité" />}
+                  />
+                  <Route
+                    path="/cookies"
+                    element={<PlaceholderPage title="Cookies" />}
+                  />
+                  <Route
+                    path="/conditions"
+                    element={
+                      <PlaceholderPage title="Conditions d'utilisation" />
+                    }
+                  />
+                  <Route
+                    path="/cart"
+                    element={<PlaceholderPage title="Panier" />}
+                  />
+                  <Route
+                    path="/article/*"
+                    element={<PlaceholderPage title="Article" />}
+                  />
+                  {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                  <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>
               <Footer />

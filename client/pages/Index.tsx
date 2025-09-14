@@ -18,14 +18,12 @@ const REWARDS_FEATURES = [
   {
     icon: "https://www.starbucks.fr/sites/starbucks-fr-pwa/files/styles/c09_items_list_192x192/public/2024-10/rewards-2_0_0.png.webp?itok=WXz1GAWW",
     heading: "Encore plus de récompenses",
-    body:
-      "Collectez les étoiles pour profiter gratuitement de boisson, nourriture ou produits dérivés !",
+    body: "Collectez les étoiles pour profiter gratuitement de boisson, nourriture ou produits dérivés !",
   },
   {
     icon: "https://www.starbucks.fr/sites/starbucks-fr-pwa/files/styles/c09_items_list_192x192/public/2024-10/rewards-3_0_0.png.webp?itok=bXxNNHqN",
     heading: "1500 Étoiles en un an = Niveau Gold",
-    body:
-      "Le niveau Gold donne accès à de nombreuses récompenses tout au long de l'année, y compris celles d'anniversaire !",
+    body: "Le niveau Gold donne accès à de nombreuses récompenses tout au long de l'année, y compris celles d'anniversaire !",
   },
 ];
 
@@ -66,8 +64,7 @@ const FEATURED = {
   mobile:
     "https://www.starbucks.fr/sites/starbucks-fr-pwa/files/styles/c22_featured_card_mobile_727x373/public/2025-05/3530_FR_AH_Rubicon_C22-Banner_727x373px_v02.jpg.webp?itok=YuUhNzjh",
   heading: "Désormais, votre gobelet se composte chez vous",
-  body:
-    "Gagnez du temps grâce au Click & Collect et cumulez vos étoiles. Commander n'aura jamais été aussi simple.",
+  body: "Gagnez du temps grâce au Click & Collect et cumulez vos étoiles. Commander n'aura jamais été aussi simple.",
   cta: { label: "En savoir plus", href: "/article/one-cup" },
 };
 
@@ -118,7 +115,8 @@ export default function Index() {
       <section className="border-t bg-white">
         <div className="container py-12">
           <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 md:text-3xl">
-            Dites bonjour à la facilité de commande, au choix infini et - oui, au café gratuit.
+            Dites bonjour à la facilité de commande, au choix infini et - oui,
+            au café gratuit.
           </h2>
           <div className="mt-8 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
             {REWARDS_FEATURES.map((f) => (
@@ -141,7 +139,9 @@ export default function Index() {
             <h2 className="text-2xl font-extrabold tracking-tight text-slate-900">
               Sélectionné pour vous
             </h2>
-            <div className="hidden text-sm text-slate-600 md:block">Faites glisser pour voir plus</div>
+            <div className="hidden text-sm text-slate-600 md:block">
+              Faites glisser pour voir plus
+            </div>
           </div>
           <div className="flex gap-6 overflow-x-auto pb-2 [scroll-snap-type:x_mandatory]">
             {CAROUSEL.map((c) => (
@@ -149,7 +149,11 @@ export default function Index() {
                 key={c.heading}
                 className="min-w-[280px] max-w-sm scroll-mx-4 scroll-snap-align-start rounded-2xl bg-white shadow-sm ring-1 ring-slate-200"
               >
-                <img src={c.image} alt="" className="h-40 w-full rounded-t-2xl object-cover" />
+                <img
+                  src={c.image}
+                  alt=""
+                  className="h-40 w-full rounded-t-2xl object-cover"
+                />
                 <div className="p-4">
                   <h3 className="font-semibold text-slate-900">{c.heading}</h3>
                   <Link

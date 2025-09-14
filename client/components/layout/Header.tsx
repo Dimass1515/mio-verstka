@@ -26,7 +26,9 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/75">
       <div className="container flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white font-bold">★</div>
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white font-bold">
+            ★
+          </div>
           <span className="sr-only">Accueil Starbucks France</span>
         </Link>
         <nav className="hidden md:flex items-center gap-6 text-sm font-medium">
@@ -59,14 +61,23 @@ export default function Header() {
               <Globe className="h-4 w-4" /> {lang.toUpperCase()}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLang("ru")}>Русский</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLang("en")}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLang("fr")}>Français</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("ru")}>
+                Русский
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("en")}>
+                English
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("fr")}>
+                Français
+              </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
           {/* Cart with red badge */}
-          <Link to="/cart" className="relative inline-flex items-center justify-center rounded-full border px-3 py-2 text-slate-800 hover:border-brand hover:text-brand">
+          <Link
+            to="/cart"
+            className="relative inline-flex items-center justify-center rounded-full border px-3 py-2 text-slate-800 hover:border-brand hover:text-brand"
+          >
             <ShoppingBag className="h-5 w-5" />
             {count > 0 && (
               <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-red-600 px-1.5 text-[10px] font-bold leading-none text-white">

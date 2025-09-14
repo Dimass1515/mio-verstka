@@ -73,7 +73,9 @@ export default function MenuPage() {
                 />
               </div>
               <div className="p-4">
-                <h3 className="text-lg font-semibold text-slate-900">{c.title}</h3>
+                <h3 className="text-lg font-semibold text-slate-900">
+                  {c.title}
+                </h3>
                 <div className="mt-2 flex items-center justify-between">
                   <span className="text-sm font-semibold text-brand">Voir</span>
                   <button
