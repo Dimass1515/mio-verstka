@@ -18,16 +18,21 @@ import AccountCreate from "./pages/AccountCreate";
 
 const queryClient = new QueryClient();
 
+import { I18nProvider } from "./contexts/i18n";
+import { CartProvider } from "./contexts/cart";
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <div className="flex min-h-screen flex-col">
-          <Header />
-          <main className="flex-1">
-            <Routes>
+        <I18nProvider>
+          <CartProvider>
+            <div className="flex min-h-screen flex-col">
+              <Header />
+              <main className="flex-1">
+                <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/nos-cafes" element={<PlaceholderPage title="Nos cafés" />} />
               <Route path="/menu" element={<MenuPage />} />
@@ -50,10 +55,12 @@ const App = () => (
               <Route path="/article/*" element={<PlaceholderPage title="Article" />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+                </Routes>
+              </main>
+              <Footer />
+            </div>
+          </CartProvider>
+        </I18nProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
