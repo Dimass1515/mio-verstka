@@ -71,7 +71,22 @@ export default function MenuPage() {
               </div>
               <div className="p-4">
                 <h3 className="text-lg font-semibold text-slate-900">{c.title}</h3>
-                <span className="mt-2 inline-block text-sm font-semibold text-brand">Voir</span>
+                <div className="mt-2 flex items-center justify-between">
+                  <span className="text-sm font-semibold text-brand">Voir</span>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      import("@/contexts/cart").then(({ useCart }) => {
+                        // dynamic import hook usage workaround inside event: delegate to global function
+                        (window as any).__addToCart?.(c.title);
+                      });
+                    }}
+                    className="rounded-full border px-3 py-1 text-xs font-semibold text-slate-800 hover:border-brand hover:text-brand"
+                  >
+                    Ajouter
+                  </button>
+                </div>
               </div>
             </Link>
           ))}
