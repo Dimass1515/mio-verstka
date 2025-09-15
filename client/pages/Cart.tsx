@@ -7,13 +7,13 @@ function formatPriceCents(cents: number, locale: string) {
 
 export default function CartPage() {
   const { cart, totalCents, updateItem, removeItem, clear } = useCart();
-  const { lang } = useI18n();
+  const { lang, t } = useI18n();
 
   return (
     <div className="container py-10">
-      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">Cart</h1>
+      <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">{t("cart_title")}</h1>
       {(!cart || cart.items.length === 0) && (
-        <p className="mt-6 text-slate-600">Votre panier est vide.</p>
+        <p className="mt-6 text-slate-600">{t("cart_empty")}</p>
       )}
       {cart && cart.items.length > 0 && (
         <div className="grid gap-8 md:grid-cols-[2fr,1fr] mt-6">
@@ -31,6 +31,9 @@ export default function CartPage() {
                     <div className="font-semibold text-slate-900">{title}</div>
                     <div className="text-sm text-slate-600">{unit}</div>
                     <div className="mt-2 flex items-center gap-2">
+                      <label className="text-sm text-slate-700">
+                        {t("qty")}
+                      </label>
                       <select
                         className="rounded-md border px-2 py-1 text-sm"
                         value={it.quantity}
@@ -43,7 +46,7 @@ export default function CartPage() {
                         ))}
                       </select>
                       <button className="text-sm text-red-600" onClick={() => removeItem(it.id)}>
-                        Remove
+                        {t("remove")}
                       </button>
                     </div>
                   </div>
@@ -55,22 +58,22 @@ export default function CartPage() {
           <aside className="space-y-4">
             <div className="rounded-xl border p-4">
               <div className="flex items-center justify-between text-slate-700">
-                <span>Subtotal</span>
+                <span>{t("subtotal")}</span>
                 <span>{formatPriceCents(totalCents, lang)}</span>
               </div>
               <div className="mt-1 flex items-center justify-between text-slate-700">
-                <span>Taxes</span>
+                <span>{t("taxes")}</span>
                 <span>{formatPriceCents(0, lang)}</span>
               </div>
               <div className="mt-3 flex items-center justify-between text-slate-900 font-semibold">
-                <span>Total</span>
+                <span>{t("total")}</span>
                 <span>{formatPriceCents(totalCents, lang)}</span>
               </div>
               <button className="mt-4 w-full rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark">
-                Checkout
+                {t("checkout")}
               </button>
               <button className="mt-2 w-full rounded-full border px-4 py-2 text-sm font-semibold hover:border-brand" onClick={() => clear()}>
-                Clear
+                {t("clear")}
               </button>
             </div>
           </aside>

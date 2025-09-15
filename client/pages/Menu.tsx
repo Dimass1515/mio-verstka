@@ -65,7 +65,7 @@ export default function MenuPage() {
       </section>
 
       <section className="bg-white">
-        <div className="container grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="container grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3">
           {(data?.items ?? []).map((p) => (
             <ProductCard key={p.id} product={p} />
           ))}

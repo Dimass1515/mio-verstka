@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
+import { useI18n } from "@/contexts/i18n";
 
 type Props = { title: string; description?: string };
 
 export default function PlaceholderPage({ title, description }: Props) {
+  const { t } = useI18n();
   return (
     <section className="container py-20">
       <div className="mx-auto max-w-2xl text-center">
@@ -13,8 +15,7 @@ export default function PlaceholderPage({ title, description }: Props) {
           <p className="mt-3 text-slate-600">{description}</p>
         ) : (
           <p className="mt-3 text-slate-600">
-            Cette page est en cours de création. Dites-moi quoi ajouter et je la
-            construirai immédiatement.
+            {t("placeholder_building")}
           </p>
         )}
         <div className="mt-8">
@@ -22,7 +23,7 @@ export default function PlaceholderPage({ title, description }: Props) {
             to="/"
             className="rounded-full bg-brand px-5 py-3 text-sm font-semibold text-white shadow hover:bg-brand-dark"
           >
-            Retour à l'accueil
+            {t("placeholder_back_home")}
           </Link>
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { Input } from "@/components/ui/input";
+import { useI18n } from "@/contexts/i18n";
 
 const TOPICS = [
   { title: "Service client Starbucks Rewards/Carte Starbucks", href: "/faq" },
@@ -16,18 +17,17 @@ const TOPICS = [
 ];
 
 export default function ServiceClientPage() {
+  const { t } = useI18n();
   return (
     <div>
       <section className="border-b bg-brand-light">
         <div className="container py-12 md:py-16">
           <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
-            Bonjour, nous vous souhaitons la bienvenue chez Starbucks
+            {t("sc_title")}
           </h1>
-          <p className="mt-3 max-w-3xl text-slate-700">
-            Vous avez une question ? Consultez notre section FAQ pour trouver rapidement des réponses aux questions fréquemment posées. Si vous ne trouvez pas ce que vous cherchez, n'hésitez pas à nous contacter. Nous sommes là pour vous aider !
-          </p>
+          <p className="mt-3 max-w-3xl text-slate-700">{t("sc_desc")}</p>
           <div className="mt-6 max-w-xl">
-            <Input placeholder="Rechercher" />
+            <Input placeholder={t("sc_search")} />
           </div>
         </div>
       </section>
@@ -43,7 +43,7 @@ export default function ServiceClientPage() {
               className="rounded-2xl border p-5 transition hover:border-brand hover:shadow-sm"
             >
               <h3 className="font-semibold text-slate-900">{t.title}</h3>
-              <span className="mt-2 inline-block text-sm font-semibold text-brand">Ouvrir</span>
+              <span className="mt-2 inline-block text-sm font-semibold text-brand">{t("open")}</span>
             </a>
           ))}
         </div>

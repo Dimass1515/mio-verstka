@@ -15,20 +15,25 @@ export default function ProductCard({ product }: { product: Product }) {
   const price = formatPriceCents(product.priceCents, lang);
 
   return (
-    <div className="group overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md">
-      <div className="aspect-[4/3] w-full overflow-hidden">
+    <div className="group flex h-full flex-col overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md">
+      <div className="aspect-square w-full overflow-hidden bg-brand-light/40">
         {product.imageUrl && (
-          <img src={product.imageUrl} alt={title} className="h-full w-full object-cover transition duration-300 group-hover:scale-105" loading="lazy" />
+          <img
+            src={product.imageUrl}
+            alt={title}
+            className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
+            loading="lazy"
+          />
         )}
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-semibold text-slate-900">{title}</h3>
-        <div className="mt-1 text-sm text-slate-600">{price}</div>
-        <div className="mt-4 flex items-center justify-between gap-3">
+      <div className="flex flex-1 flex-col p-5 text-center">
+        <h3 className="text-base font-bold tracking-tight text-slate-900">{title}</h3>
+        <div className="mt-1 text-sm font-semibold text-brand">{price}</div>
+        <div className="mt-4 flex items-center justify-center gap-3">
           <label className="text-sm text-slate-700">
             Qty
             <select
-              className="ml-2 rounded-md border px-2 py-1 text-sm"
+              className="ml-2 rounded-full border px-3 py-1 text-sm hover:border-brand focus:outline-none"
               value={qty}
               onChange={(e) => setQty(Math.max(1, Math.min(10, Number(e.target.value))))}
             >
@@ -39,10 +44,12 @@ export default function ProductCard({ product }: { product: Product }) {
               ))}
             </select>
           </label>
+        </div>
+        <div className="mt-4">
           <button
             type="button"
             onClick={() => addItem(product.id, qty)}
-            className="inline-flex items-center rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white hover:bg-brand-dark"
+            className="inline-flex w-full items-center justify-center rounded-full bg-brand px-5 py-2 text-sm font-semibold text-white transition hover:bg-brand-dark"
             aria-live="polite"
           >
             {t("add")}

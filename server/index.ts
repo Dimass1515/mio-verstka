@@ -7,6 +7,10 @@ import { listProducts, getProduct } from "./routes/products";
 import { getCart, upsertItem, patchItem, deleteItem, clearCart } from "./routes/cart";
 
 export function createServer() {
+  // Provide sane defaults for dev if .env is missing
+  if (!process.env.DATABASE_URL) {
+    process.env.DATABASE_URL = "file:./dev.db";
+  }
   const app = express();
 
   // Middleware
