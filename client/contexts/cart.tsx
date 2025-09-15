@@ -1,29 +1,69 @@
-import { createContext, useContext, useState, ReactNode } from "react";
-
-type CartItem = { id: string; qty: number };
+import { createContext, useContext, useEffect, useMemo, useState, ReactNode } from "react";
+import type { CartDTO } from "@shared/api";
 
 interface CartCtx {
+  cart: CartDTO | null;
   count: number;
-  addItem: (id: string, qty?: number) => void;
-  clear: () => void;
+  totalCents: number;
+  addItem: (productId: string, quantity?: number) => Promise<void>;
+  updateItem: (id: string, quantity: number) => Promise<void>;
+  removeItem: (id: string) => Promise<void>;
+  clear: () => Promise<void>;
 }
 
 const CartContext = createContext<CartCtx | null>(null);
 
 export function CartProvider({ children }: { children: ReactNode }) {
-  const [items, setItems] = useState<CartItem[]>([]);
-  const addItem = (id: string, qty: number = 1) => {
-    setItems((prev) => {
-      const found = prev.find((p) => p.id === id);
-      if (found)
-        return prev.map((p) => (p.id === id ? { ...p, qty: p.qty + qty } : p));
-      return [...prev, { id, qty }];
-    });
+  const [cart, setCart] = useState<CartDTO | null>(null);
+
+  const refresh = async () => {
+    const res = await fetch("/api/cart", { credentials: "include" });
+    const data: CartDTO = await res.json();
+    setCart(data);
   };
-  const clear = () => setItems([]);
-  const count = items.reduce((sum, it) => sum + it.qty, 0);
+
+  useEffect(() => {
+    refresh();
+  }, []);
+
+  const addItem = async (productId: string, quantity: number = 1) => {
+    await fetch("/api/cart/items", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ productId, quantity }),
+    });
+    await refresh();
+  };
+
+  const updateItem = async (id: string, quantity: number) => {
+    await fetch(`/api/cart/items/${id}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify({ quantity }),
+    });
+    await refresh();
+  };
+
+  const removeItem = async (id: string) => {
+    await fetch(`/api/cart/items/${id}`, { method: "DELETE", credentials: "include" });
+    await refresh();
+  };
+
+  const clear = async () => {
+    await fetch("/api/cart/clear", { method: "POST", credentials: "include" });
+    await refresh();
+  };
+
+  const count = useMemo(() => cart?.items?.reduce((s, it) => s + it.quantity, 0) ?? 0, [cart]);
+  const totalCents = useMemo(
+    () => cart?.items?.reduce((sum, it) => sum + (it.product?.priceCents ?? 0) * it.quantity, 0) ?? 0,
+    [cart]
+  );
+
   return (
-    <CartContext.Provider value={{ count, addItem, clear }}>
+    <CartContext.Provider value={{ cart, count, totalCents, addItem, updateItem, removeItem, clear }}>
       {children}
     </CartContext.Provider>
   );

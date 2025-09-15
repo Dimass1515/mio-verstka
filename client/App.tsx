@@ -15,6 +15,7 @@ import MenuPage from "./pages/Menu";
 import ServiceClientPage from "./pages/ServiceClient";
 import AccountLogin from "./pages/AccountLogin";
 import AccountCreate from "./pages/AccountCreate";
+import CartPage from "./pages/Cart";
 
 const queryClient = new QueryClient();
 
@@ -96,10 +97,7 @@ const App = () => (
                       <PlaceholderPage title="Conditions d'utilisation" />
                     }
                   />
-                  <Route
-                    path="/cart"
-                    element={<PlaceholderPage title="Panier" />}
-                  />
+                  <Route path="/cart" element={<CartPage />} />
                   <Route
                     path="/article/*"
                     element={<PlaceholderPage title="Article" />}

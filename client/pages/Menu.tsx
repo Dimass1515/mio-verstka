@@ -1,4 +1,8 @@
 import { Link } from "react-router-dom";
+import { useI18n } from "@/contexts/i18n";
+import { useQuery } from "@tanstack/react-query";
+import ProductCard from "@/components/products/ProductCard";
+import type { PaginatedProducts } from "@shared/api";
 
 const CATEGORIES = [
   {
@@ -43,54 +47,27 @@ import { useCart } from "@/contexts/cart";
 
 export default function MenuPage() {
   const { addItem } = useCart();
+  const { t } = useI18n();
+  const { data } = useQuery({
+    queryKey: ["products"],
+    queryFn: async () => {
+      const res = await fetch("/api/products");
+      return (await res.json()) as PaginatedProducts;
+    },
+  });
   return (
     <div>
       <section className="border-b bg-brand-light">
         <div className="container py-12 md:py-16">
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">
-            Menu
-          </h1>
-          <p className="mt-3 max-w-prose text-slate-700">
-            Découvrez nos boissons, pâtisseries et plus encore.
-          </p>
+          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 md:text-4xl">{t("nav_menu")}</h1>
+          <p className="mt-3 max-w-prose text-slate-700">{t("home_sub")}</p>
         </div>
       </section>
 
       <section className="bg-white">
         <div className="container grid gap-6 py-10 sm:grid-cols-2 lg:grid-cols-3">
-          {CATEGORIES.map((c) => (
-            <Link
-              to={c.href}
-              key={c.title}
-              className="group overflow-hidden rounded-2xl border bg-white shadow-sm transition hover:shadow-md"
-            >
-              <div className="aspect-[4/3] w-full overflow-hidden">
-                <img
-                  src={c.image}
-                  alt={c.title}
-                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
-                  loading="lazy"
-                />
-              </div>
-              <div className="p-4">
-                <h3 className="text-lg font-semibold text-slate-900">
-                  {c.title}
-                </h3>
-                <div className="mt-2 flex items-center justify-between">
-                  <span className="text-sm font-semibold text-brand">Voir</span>
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.preventDefault();
-                      addItem(c.title, 1);
-                    }}
-                    className="rounded-full border px-3 py-1 text-xs font-semibold text-slate-800 hover:border-brand hover:text-brand"
-                  >
-                    Ajouter
-                  </button>
-                </div>
-              </div>
-            </Link>
+          {(data?.items ?? []).map((p) => (
+            <ProductCard key={p.id} product={p} />
           ))}
         </div>
       </section>
