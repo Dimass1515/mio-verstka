@@ -1,4 +1,4 @@
-import { Link, NavLink } from "react-router-dom";
+﻿import { Link, NavLink } from "react-router-dom";
 import { Globe, ShoppingBag, Menu } from "lucide-react";
 import { useI18n } from "@/contexts/i18n";
 import { useCart } from "@/contexts/cart";
@@ -24,10 +24,10 @@ export default function Header() {
     <header className="sticky top-0 z-40 w-full border-b bg-white">
       <div className="container flex h-16 items-center justify-between gap-4">
         <Link to="/" className="flex items-center gap-3">
-          <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white font-bold">★</div>
-          <span className="sr-only">Accueil Starbucks France</span>
+          <div className="grid h-10 w-10 place-items-center rounded-full bg-brand text-white font-black">SB</div>
+          <span className="sr-only">Home</span>
         </Link>
-        <nav className="hidden md:flex items-center gap-6 text-base font-semibold ml-2">
+        <nav className="hidden md:flex items-center gap-8 text-sm font-semibold ml-2">
           {NAV_ITEMS.map((item) => (
             <NavLink
               key={item.to}
@@ -51,25 +51,19 @@ export default function Header() {
             {t("join_now")}
           </Link>
 
-          {/* Language selector with 7px padding */}
+          {/* Language selector */}
           <DropdownMenu>
-            <DropdownMenuTrigger className="inline-flex items-center gap-2 rounded-full border text-sm font-semibold text-slate-800 hover:border-brand hover:text-brand px-[7px] py-[7px]">
+            <DropdownMenuTrigger className="inline-flex items-center gap-2 rounded-full border px-[7px] py-[7px] text-sm font-semibold text-slate-800 hover:border-brand hover:text-brand">
               <Globe className="h-4 w-4" /> {lang.toUpperCase()}
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
-              <DropdownMenuItem onClick={() => setLang("ru")}>
-                Русский
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLang("en")}>
-                English
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setLang("fr")}>
-                Français
-              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("ru")}>Русский</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("en")}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setLang("fr")}>Français</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
 
-          {/* Cart with red badge */}
+          {/* Cart with badge */}
           <Link
             to="/cart"
             className="relative inline-flex items-center justify-center rounded-full border px-3 py-2 text-slate-800 hover:border-brand hover:text-brand"
@@ -132,9 +126,9 @@ export default function Header() {
                       <span className="inline-flex items-center gap-2"><Globe className="h-4 w-4" /> {lang.toUpperCase()}</span>
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                      <DropdownMenuItem onClick={() => setLang("ru")}>Русский</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setLang("ru")}>Р СѓСЃСЃРєРёР№</DropdownMenuItem>
                       <DropdownMenuItem onClick={() => setLang("en")}>English</DropdownMenuItem>
-                      <DropdownMenuItem onClick={() => setLang("fr")}>Français</DropdownMenuItem>
+                      <DropdownMenuItem onClick={() => setLang("fr")}>FranГ§ais</DropdownMenuItem>
                     </DropdownMenuContent>
                   </DropdownMenu>
                 </div>
@@ -146,3 +140,6 @@ export default function Header() {
     </header>
   );
 }
+
+
+

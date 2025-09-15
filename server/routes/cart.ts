@@ -1,6 +1,7 @@
 import { RequestHandler } from "express";
 import { z } from "zod";
-import { PrismaClient } from "@prisma/client";
+import pkg from "@prisma/client";
+const { PrismaClient } = pkg as unknown as { PrismaClient: new () => any };
 
 const prisma = new PrismaClient();
 
