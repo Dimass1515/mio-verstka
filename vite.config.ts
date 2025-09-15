@@ -2,14 +2,13 @@ import { defineConfig, Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
+  // Ensure Prisma has DATABASE_URL during dev to avoid crashes on import
   if (!process.env.DATABASE_URL) {
     process.env.DATABASE_URL = "file:./dev.db";
   }
   const isDev = mode === "development";
   return {
-    // Use relative paths in production so GitHub Pages (subpath) works
     base: mode === "production" ? "./" : "/",
     server: {
       host: "::",
@@ -35,12 +34,12 @@ export default defineConfig(({ mode }) => {
 function expressPlugin(): Plugin {
   return {
     name: "express-plugin",
-    apply: "serve", // Only apply during development (serve mode)
+    apply: "serve",
     async configureServer(server) {
       const { createServer } = await import("./server");
       const app = createServer();
-      // Add Express app as middleware to Vite dev server
       server.middlewares.use(app);
     },
   };
 }
+ 
