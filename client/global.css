@@ -5,6 +5,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Performance optimizations */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optimize image loading */
+img[loading="lazy"] {
+  content-visibility: auto;
+  contain-intrinsic-size: 300px 300px;
+}
+
+/* Reduce layout shifts */
+.aspect-square {
+  aspect-ratio: 1 / 1;
+}
+
+/* Optimize animations */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 @layer base {
   /**
    * Tailwind CSS theme
